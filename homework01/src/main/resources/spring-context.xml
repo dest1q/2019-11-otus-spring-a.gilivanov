@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="inputOutputService" class="ru.otus.homework.service.InputOutputServiceImpl"/>
+    <bean id="personService" class="ru.otus.homework.service.PersonServiceImpl">
+        <constructor-arg name="inputOutputService" ref="inputOutputService"/>
+    </bean>
+    <bean id="questionDao" class="ru.otus.homework.dao.QuestionDaoImpl">
+        <constructor-arg name="resource" value="questions.csv"/>
+    </bean>
+    <bean id="questionService" class="ru.otus.homework.service.QuestionServiceImpl">
+        <constructor-arg name="inputOutputService" ref="inputOutputService"/>
+        <constructor-arg name="questionDao" ref="questionDao"/>
+    </bean>
+    <bean id="testService" class="ru.otus.homework.service.TestServiceImpl">
+        <constructor-arg name="inputOutputService" ref="inputOutputService"/>
+        <constructor-arg name="personService" ref="personService"/>
+        <constructor-arg name="questionService" ref="questionService"/>
+    </bean>
+
+</beans>
