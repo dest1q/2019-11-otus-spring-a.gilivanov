@@ -2,6 +2,7 @@ package ru.otus.homework.service;
 
 import ru.otus.homework.domain.Person;
 import ru.otus.homework.domain.Question;
+import ru.otus.homework.exceptions.HomeworkException;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void run() throws Exception {
+    public void run() throws HomeworkException {
         int correct = 0;
         Person person = this.personService.getPerson();
         List<Question> questions = this.questionService.getQuestions();
