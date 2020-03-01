@@ -1,0 +1,10 @@
+locale:
+  tag: ru-RU
+
+spring:
+  messages:
+    encoding: UTF-8
+    basename: messages
+  shell:
+    interactive:
+      enabled: false
